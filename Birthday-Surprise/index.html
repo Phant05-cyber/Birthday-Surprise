@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <!-- STEP 1: Envelope -->
+    <section class="screen active" id="step1">
+      <p class="eyebrow">A LITTLE SURPRISE FOR YOU</p>
+      <h1>Something special<br>is waiting for you.</h1>
+      <p class="intro">I made this little page just for you.</p>
+
+      <button class="envelope-button" id="openEnvelope" aria-label="Open the envelope">
+        <span class="envelope">
+          <span class="letter">
+            <span class="letter-heart">♡</span>
+            <span>For you, my<br><strong>best friend</strong></span>
+          </span>
+          <span class="envelope-back"></span>
+          <span class="envelope-front"></span>
+          <span class="envelope-flap"></span>
+        </span>
+      </button>
+      <p class="hint">Tap the envelope to open</p>
+    </section>
+
+    <!-- STEP 2: Birthday greeting -->
+    <section class="screen" id="step2">
+      <p class="eyebrow">TODAY IS YOUR DAY</p>
+      <div class="birthday-card">
+        <div class="sparkle sparkle-one">✦</div>
+        <div class="sparkle sparkle-two">✧</div>
+        <div class="cake" aria-hidden="true">
+          <div class="candle"><span></span></div>
+          <div class="icing"></div>
+          <div class="cake-top"></div>
+          <div class="cake-body"></div>
+          <div class="cake-plate"></div>
+        </div>
+        <h1>Happy Birthday!</h1>
+        <p class="birthday-message">I hope your day is filled with smiles,<br>beautiful moments, and little joys.</p>
+        <button class="primary-button" id="toWish">Continue <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- STEP 3: Wish -->
+    <section class="screen" id="step3">
+      <p class="eyebrow">A WISH JUST FOR YOU</p>
+      <div class="wish-card">
+        <div class="wish-icon">♡</div>
+        <h1>Make a wish</h1>
+        <p class="wish-copy">Before we celebrate, tell me one wish<br>you want to come true.</p>
+        <form id="wishForm">
+          <label class="sr-only" for="wishInput">Your wish</label>
+          <textarea id="wishInput" maxlength="180" placeholder="Enter your wish..." required></textarea>
+          <p class="form-note">Your wish can be big or small. It is yours.</p>
+          <button class="primary-button" type="submit">Submit my wish <span>→</span></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- STEP 4: Celebration -->
+    <section class="screen celebration" id="step4">
+      <canvas id="fireworks"></canvas>
+      <div class="celebration-content">
+        <p class="eyebrow">A NEW YEAR OF YOU</p>
+        <div class="big-heart">♥</div>
+        <h1>Keep shining!</h1>
+        <p class="final-message">May this new chapter bring you<br>peace, courage, laughter, and love.</p>
+        <p class="wish-result" id="wishResult"></p>
+        <button class="restart-button" id="restart">Replay the surprise ↻</button>
+      </div>
+    </section>
+
+    <div class="progress" aria-label="Progress">
+      <span class="progress-dot active-dot"></span>
+      <span class="progress-dot"></span>
+      <span class="progress-dot"></span>
+      <span class="progress-dot"></span>
+    </div>
+    <p class="footer">MADE WITH ♡ FOR SOMEONE SPECIAL</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

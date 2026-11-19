@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --ink: #39333a;
+  --muted: #8b8189;
+  --rose: #c77d91;
+  --rose-dark: #a95f77;
+  --cream: #fffaf7;
+  --line: #f0e5e3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 15%, #f8e8e7 0, transparent 32%),
+    radial-gradient(circle at 85% 85%, #f3e6ed 0, transparent 30%),
+    #fdf8f5;
+}
+
+button, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 20px 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen {
+  display: none;
+  width: min(100%, 620px);
+  text-align: center;
+  animation: appear .65s ease both;
+  position: relative;
+  z-index: 1;
+}
+.screen.active { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  color: var(--rose-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin: 0 0 18px;
+}
+
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(38px, 7vw, 58px);
+  line-height: 1.08;
+  font-weight: 600;
+  margin: 0;
+}
+
+.intro, .hint { color: var(--muted); }
+.intro { margin: 18px 0 30px; font-size: 15px; }
+.hint { margin-top: 28px; font-size: 13px; letter-spacing: .4px; }
+
+.envelope-button {
+  border: 0;
+  background: transparent;
+  padding: 15px;
+  perspective: 900px;
+}
+.envelope {
+  width: min(76vw, 360px);
+  height: 225px;
+  display: block;
+  position: relative;
+  filter: drop-shadow(0 18px 18px #9b6e7625);
+  transition: transform .3s ease;
+}
+.envelope-button:hover .envelope { transform: translateY(-6px) rotate(-1deg); }
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #e7b9c3;
+  border-radius: 8px;
+}
+.letter {
+  position: absolute;
+  z-index: 1;
+  width: 82%;
+  height: 83%;
+  left: 9%;
+  top: 4%;
+  border-radius: 5px;
+  background: #fffdfb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.25;
+  transition: transform .65s ease;
+}
+.letter-heart { color: var(--rose); font-size: 42px; line-height: 1; }
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(145deg, transparent 49.5%, #d99eae 50%) left,
+              linear-gradient(215deg, transparent 49.5%, #e9bac5 50%) right;
+  background-size: 50.2% 100%;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+}
+.envelope-flap {
+  position: absolute;
+  z-index: 4;
+  inset: 0 0 auto;
+  height: 58%;
+  background: #f0cbd2;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform .55s ease;
+}
+.envelope.open .envelope-flap { transform: rotateX(180deg); z-index: 0; }
+.envelope.open .letter { transform: translateY(-90px); }
+
+.birthday-card, .wish-card {
+  background: #fffdfb;
+  border: 1px solid #f3e8e6;
+  border-radius: 28px;
+  padding: 42px 30px;
+  box-shadow: 0 22px 65px #9d727515;
+  position: relative;
+  overflow: hidden;
+}
+.birthday-card h1 { color: var(--rose-dark); font-size: clamp(38px, 7vw, 54px); }
+.birthday-message, .wish-copy {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  margin: 17px 0 25px;
+}
+.sparkle { position: absolute; color: #d7a5b1; font-size: 30px; }
+.sparkle-one { top: 25px; left: 35px; }
+.sparkle-two { top: 55px; right: 40px; font-size: 24px; }
+
+.cake { width: 150px; height: 145px; margin: 0 auto 22px; position: relative; }
+.cake-body {
+  position: absolute; width: 116px; height: 65px; bottom: 17px; left: 17px;
+  border-radius: 8px 8px 16px 16px;
+  background: repeating-linear-gradient(90deg, #e7a6a9 0 18px, #f2c5bd 18px 36px);
+  border-bottom: 7px solid #d58e9b;
+}
+.cake-top {
+  position: absolute; z-index: 2; left: 17px; bottom: 70px;
+  width: 116px; height: 24px; border-radius: 50%;
+  background: #ffe2d8; border: 2px solid #e7b5b2;
+}
+.icing {
+  position: absolute; z-index: 3; left: 17px; bottom: 60px; width: 116px; height: 20px;
+  background: #fff0e6; border-radius: 0 0 14px 14px;
+  clip-path: polygon(0 0,100% 0,100% 65%,88% 100%,77% 60%,65% 100%,50% 60%,37% 100%,24% 60%,12% 100%,0 65%);
+}
+.candle {
+  position: absolute; z-index: 4; left: 71px; top: 15px; width: 8px; height: 43px;
+  background: repeating-linear-gradient(135deg, #fff 0 5px, #d58da0 5px 9px);
+  border-radius: 3px;
+}
+.candle span {
+  position: absolute; width: 13px; height: 18px; left: -2px; top: -18px;
+  background: #f4bd68; border-radius: 80% 20% 70% 30%;
+  transform: rotate(45deg); box-shadow: 0 0 18px #f4bd6880;
+}
+.cake-plate {
+  position: absolute; bottom: 7px; left: 5px; width: 140px; height: 14px;
+  background: #ead3d4; border-radius: 50%;
+}
+
+.primary-button {
+  border: 0; border-radius: 999px; padding: 14px 25px;
+  color: white; background: var(--rose-dark); font-weight: 600;
+  box-shadow: 0 8px 20px #a95f7730; transition: .2s ease;
+}
+.primary-button:hover { background: #914d65; transform: translateY(-2px); }
+.primary-button span { margin-left: 10px; }
+
+.wish-card { padding: 42px 34px; }
+.wish-icon { color: var(--rose); font-size: 48px; margin-bottom: 8px; }
+.wish-card h1 { font-size: 48px; }
+.wish-card textarea {
+  width: 100%; min-height: 125px; resize: vertical;
+  border: 1px solid #ead9dc; border-radius: 15px;
+  background: #fffaf9; padding: 16px; color: var(--ink);
+  outline: none; line-height: 1.6;
+}
+.wish-card textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 3px #c77d9118; }
+.wish-card textarea::placeholder { color: #b9aeb2; }
+.form-note { color: #a59aa0; font-size: 11px; margin: 9px 0 20px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+.progress {
+  position: absolute; bottom: 47px; display: flex; gap: 9px; z-index: 2;
+}
+.progress-dot { width: 7px; height: 7px; border-radius: 50%; background: #e5d5d8; transition: .3s; }
+.progress-dot.active-dot { width: 22px; border-radius: 8px; background: var(--rose); }
+.footer {
+  position: absolute; bottom: 17px; color: #b6a9ae;
+  font-size: 9px; letter-spacing: 2px; margin: 0;
+}
+
+.celebration {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  background: #090a12; color: #fff; display: none;
+  align-items: center; justify-content: center; overflow: hidden;
+}
+.celebration.active { display: flex; }
+#fireworks { position: absolute; inset: 0; width: 100%; height: 100%; }
+.celebration-content { position: relative; z-index: 1; padding: 30px 20px; }
+.celebration .eyebrow { color: #e7a8bb; }
+.big-heart {
+  color: #f19bb5; font-size: 72px; margin: 5px 0 12px;
+  text-shadow: 0 0 30px #f19bb588; animation: heartbeat 1.3s infinite;
+}
+@keyframes heartbeat { 50% { transform: scale(1.14); } }
+.celebration h1 { font-size: clamp(48px, 8vw, 72px); }
+.final-message { color: #c7c3d0; line-height: 1.9; margin: 18px 0; }
+.wish-result { color: #f2c3d0; font-style: italic; max-width: 440px; margin: 0 auto 25px; overflow-wrap: anywhere; }
+.restart-button {
+  background: transparent; color: #e9b7c5; border: 1px solid #9b718b;
+  border-radius: 999px; padding: 12px 20px;
+}
+.restart-button:hover { background: #ffffff12; }
+
+@media (max-width: 480px) {
+  .app { padding: 42px 16px 76px; }
+  .birthday-card, .wish-card { padding: 35px 20px; border-radius: 22px; }
+  .envelope { height: 190px; }
+  .letter { font-size: 19px; }
+  .footer { font-size: 8px; }
+}
